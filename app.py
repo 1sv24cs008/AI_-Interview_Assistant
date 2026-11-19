@@ -24,11 +24,10 @@ elif mode == 'generate code questions':
 else:
   question = st.text_area('Enter interview question here ')
   answer = st.text_area('enter your answer ', height = 160)
-
+  
 if st.button("Generate AI Response",type ="primary"):
   if mode in ["Evaluate Answer", "Improve Answer"] and (
-    not question.strip() or not answer.strip()
-):
+    not question.strip() or not answer.strip()):
      st.warning("Please enter a vaild Question and Answer")
      st.stop()
   if mod == "generate Questions":
@@ -39,7 +38,7 @@ if st.button("Generate AI Response",type ="primary"):
      task = "question :" + question + "MY Answer : " + answer + "Evalute this answer based on concept, relevence , communication, length of answe. give each rating out of 5 in a list. "
   elif mode == "improve answers":
      task = "question :" + question + "MY Answer : " + answer + "imporve the answern based oon choice on words key words to include. do not invent anything about candidate "
-  background ="Job role:" +role+ "Difficulti level "+level 
+background ="Job role:" +role+ "Difficulti level "+level 
   with st.spinner(" generating your answer .... "):
      try:
        response = client.chat.completions.create(
